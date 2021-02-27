@@ -1,1 +1,125 @@
+<html>
+<head>
+!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(51509675, "init", {
+        id:51509675,
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/51509675" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <title>МИР</title>
+
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="https://yastatic.net/bootstrap/3.3.4/css/bootstrap.min.css">
+	
+  <style>
+	#header{
+	  position: absolute;
+	  background: #6fbae3;
+	  width: 100%;
+	  height: 10%;
+	  left: 0px;
+	  top: 0px;
+	}
+    #map{
+      position: absolute;
+      background: #FFF8DC;
+      left: 1%;
+      right: 1%;
+      top: 11%;
+      bottom: 40px; 
+    }
+	#text{
+      position: absolute;
+      background: #1f6e99;
+	  left: 0%;
+      right: 0%;
+      top: 10%;
+      bottom: 30px;
+    }
+	#footer{
+      position: absolute;
+      background: #DEB887;
+	  height: 30px;
+      left: 0px;
+      right:0px;
+      bottom: 0px;
+	}
+	.styletest {
+	  color: #DEB887; 
+	  font-size: 60px; 
+	  font-family: Georgia;
+	  text-shadow: black 0 0 10px;
+	}
+  </style>   
+</head>
+<body>
+ <div id="header">
+  <div align="center"><font class="styletest">КАЛИНИГРАД</font></div>
+ </div>
+ 
+ <div id="text"></div>
+ 
+ <div id="map">
+ <script type="text/javascript">
+ymaps.ready(init);
+var myMap;
+function init(){     
+    myMap = new ymaps.Map("map", {
+        center: [54.710157, 20.510137],
+        zoom: 13
+    }),
+    clusterer = new ymaps.Clusterer({clusterDisableClickZoom: true}),
+    getPointData = function (index) {
+        return {
+            balloonContentBody: 'Привет! <img src="' + content[index] + '" alt="альтернативный текст" width="800">',
+            clusterCaption: 'МИИГАиК <strong>' + index + '</strong>',
+        };
+    },
+    points = [
+    ],
+    geoObjects = [];
+//Записываем геометри__________________
+        
+geoObjects[geoObjects.length] = new ymaps.Placemark([54.703910, 20.515689], { clusterCaption: 'Рыбная деревня', balloonContent: '<br><a href="https://www.kp.ru/russia/kaliningrad/mesta/rybnaya-derevnya/" target="_blank">Рыбная деревня 1</a> '}, {
+    preset: 'islands#redGlyphIcon',            
+    iconGlyph: 'star',
+    iconGlyphColor: 'red',balloonMaxWidth: '400', balloonMaxHeight: 'auto'
+});
+        
+
+//Закончили запись меток	
+    
+    clusterer.add(geoObjects);
+    myMap.geoObjects.add(clusterer);
+/*	// Откроем балун на третьей метке в массиве.
+    var objectState = clusterer.getObjectState(geoObjects[2]);
+    if (objectState.isClustered) {
+        // Если метка находится в кластере, выставим ее в качестве активного объекта.
+        // Тогда она будет "выбрана" в открытом балуне кластера.
+        objectState.cluster.state.set('activeObject', geoObjects[2]);
+        clusterer.balloon.open(objectState.cluster);
+    } else if (objectState.isShown) {
+        // Если метка не попала в кластер и видна на карте, откроем ее балун.
+        geoObjects[2].balloon.open();
+    }	*/	
+    
+}
+
+</script>
+ </div>
+ 
+ <div id="footer"align="right"></div>
+  
+</body>
+</html>
 
